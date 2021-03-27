@@ -5,6 +5,8 @@ import { getAllSlugs, getPostBySlug } from '../../lib/api';
 import styles from '../../styles/Posts.module.css';
 
 function Posts({ post }) {
+  const createdAt = new Date(post._createdAt);
+
   return (
     <div>
       <Head>
@@ -17,7 +19,21 @@ function Posts({ post }) {
             <Link href={`/`}>🏠 Home</Link>
           </h2>
         </div>
-        <div className={styles.info}>By: {post.author.name}</div>
+        <div className={styles.info}>
+          <div className={styles.author}>
+            <Link href={`/author/${post.author.slug}`}>
+              <a>By: {post.author.name}</a>
+            </Link>
+          </div>
+        </div>
+        <div className={styles.tags}>
+          {post.tags.map((tag) => (
+            <Link key={tag._id} href={`/tag/${tag._id}`}>
+              <div className={styles.tag}>{tag.name}</div>
+            </Link>
+          ))}
+        </div>
+        <div className={styles.date}>{createdAt.toDateString()}</div>
         <div className={styles.body}>
           <main dangerouslySetInnerHTML={{ __html: post.bodyHtml }} />
         </div>

@@ -56,6 +56,37 @@
   font-weight: 100;
 }
 
+.date {
+  color: inherit;
+  font-family: monospace;
+  font-size: 1rem;
+  padding: 5px 10px;
+  display: inline-block;
+  margin: 0 2px;
+  font-weight: 300;
+}
+
+.tags {
+  font-size: 0.9rem;
+  padding: 5px;
+  display: flex;
+}
+
+.tag {
+  background-color: rgb(224, 201, 238);
+  margin: 2px;
+  padding: 6px;
+  font-weight: 600;
+  border-radius: 20px;
+}
+
+.tag:hover,
+.tag:focus,
+.tag:active {
+  font-weight: 800;
+  cursor: pointer;
+}
+
 @media only screen and (max-width: 500px) {
   .header {
     display: inline;
